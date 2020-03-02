@@ -7,6 +7,15 @@ verify_ssl = true
 
 [packages]
 flask = "*"
+jinja2 = "*"
+basilica = "*"
+redis = "*"
+psycopg2 = "*"
+flask-sqlalchemy = "*"
+gunicorn = "*"
+scikit-learn = "*"
+python-dotenv = "*"
+python-decouple = "*"
 
 [requires]
 python_version = "3.8"
