@@ -1,20 +1,13 @@
-"""Minimal flask app"""
+"""Code for our app"""
 
-from flask import Flask, render_template
+from flask import Flask
 
-#Make the application
-app = Flask(__name__)
+#make our app factory
 
-#Make the route
-@app.route("/")
+def create_app():
+    app = Flask(__name__)
 
-#Now define a function
-def hello():
-    return "Hello World!"
-
-#MAke a second route
-@app.route("/home")
-
-#Function that goes with home
-def preds():
-    return render_template('home.html')
+    @app.route('/')
+    def root():
+        return 'Welcome to Cannabis!'
+    return app
