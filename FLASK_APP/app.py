@@ -3,7 +3,7 @@ import pandas as pd
 from mc_app import mc_utils
 import pickle
 
-pickle_dict = pickle.load(open("marijuana_dict.p", "rb"))
+pickle_dict = pickle.load(open("dict.p", "rb"))
 
 
 def create_app():
