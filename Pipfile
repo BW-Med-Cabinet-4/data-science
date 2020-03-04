@@ -25,6 +25,11 @@ sklearn = "*"
 numpy = "*"
 csv = "*"
 mc-app = "*"
+pickle-mixin = "*"
+heroku = "*"
+pip = "*"
+install = "*"
+requirements-txt = "*"
 
 [requires]
 python_version = "3.8"
