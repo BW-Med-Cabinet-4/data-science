@@ -1,20 +1,20 @@
-"""Code for our app"""
+from flask import Flask, request, jsonify
+import pandas as pd
+from mc_app import mc_utils
+import pickle
 
-from flask import Flask
-from .models import DB
+pickle_dict = pickle.load(open("marijuana_dict.p", "rb"))
 
-#make our app factory
 
 def create_app():
     app = Flask(__name__)
+    @app.route('/strain/<strain>', methods=['GET'])
+    def myfunc(strain):
+      #strain = request.values['strain']
+      return jsonify({"race":pickle_dict[strain]})
 
 
-    #add config for database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-    #have the database know about the app
-    DB.init_app(app)
-
-    @app.route('/')
-    def root():
-        return 'Welcome to Cannabis!'
     return app
+
+if __name__ == "__main__":
+    app = create_app()
