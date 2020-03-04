@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import pandas as pd
-from mc_app import mc_utils
+from FLASK_APP import utils
 import pickle
 
 pickle_dict = pickle.load(open("dict.p", "rb"))
