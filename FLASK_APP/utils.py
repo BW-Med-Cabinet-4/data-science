@@ -5,10 +5,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-## get the data
-df = pd.read_csv('https://raw.githubusercontent.com/med-cabinet-5/data-science/master/data/cannabis.csv')
-df.head()
-
 ## functions
 
 ## remove duplicates
@@ -20,26 +16,26 @@ def remove_duplicates(df):
 def lower_case_column(column_name):
     return df[column_name].str.lower()
 
-## search by strain keyword
+## search by name keyword
 def search_strains(keyword):
-    return df[df['Strain'].str.contains(keyword)]
+    return df[df['name'].str.contains(keyword)]
 
 ## get strain name from index
-def get_strain_from_index(index):
+def get_name_from_index(index):
     strain_name = df.iloc[index][0]
     return strain_name
 
-## get index number from strain
-def get_index_from_strain(strain):
-    strain_index = df[df['Strain'] == strain].index[0]
-    return strain_index
+## get index number from strain name
+def get_index_from_name(name):
+    name_index = df[df['name'] == name].index[0]
+    return name_index
 
 ## combine features into one column
 def combine_features(row):
-    return row['Strain'] +" "+ row['Type'] + " "+ row['Rating'] + " " + row['Effects'] + " " + row['Flavor'] + " " + row['Description']
+    return row['name'] + " " + row['flavors'] + " "+ row['race'] + " " + row['positive'] + " " + row['negative'] + " " + row['medical']  + " " + row['Rating'] + " " + row['Description']
 
 ## these are the columns we are going to use
-features = ['Strain', 'Type', 'Rating', 'Effects', 'Flavor', 'Description']
+features = ['name', 'flavors', 'race', 'positive', 'negative', 'medical', 'Rating', 'Description']
 
 ## drop duplicates
 df = remove_duplicates(df)
@@ -54,8 +50,8 @@ df['combined_features'] = df.apply(combine_features, axis=1)
 for feature in features:
     df[feature] = df[feature].fillna('')
 
-## make strain titles lowercase for easier search
-df['Strain'] = lower_case_column('Strain')
+## make strain name titles lowercase for easier search
+df['name'] = lower_case_column('name')
 
 ## the function
 def recommend_strains(strain, num_of_strains=5):
