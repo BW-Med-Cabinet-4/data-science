@@ -6,7 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 ## get the data
-df = pd.read_csv('cannabis.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/med-cabinet-5/data-science/master/data/cannabis.csv')
 df.head()
 
 ## functions
