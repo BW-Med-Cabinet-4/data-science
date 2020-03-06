@@ -6,6 +6,16 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+basilica = "*"
+pickle = "*"
+flask = "*"
+sql-alchemy = "*"
+flask-sqlalchemy = "*"
+gunicorn = "*"
+heroku = "*"
+pandas = "*"
+numpy = "*"
+dill = "*"
 
 [requires]
 python_version = "3.8"
